@@ -1,0 +1,17 @@
+#simulation1 {
+  width: 400px;
+  margin: 10px;
+  display: flex;
+}
+
+#simulationInfo {
+  flex: 0 0 70%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#anticipationInfo {
+  flex: 0 0 30%;
+  background-color: aquamarine;
+}
