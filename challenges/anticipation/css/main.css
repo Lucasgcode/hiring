@@ -1,17 +1,100 @@
-#simulation1 {
-  width: 400px;
-  margin: 10px;
+body {
+  font-family: sans-serif;
+  background-color: #f5f5f5;
+}
+
+#root {
+  max-width: 1280px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#simulation1 {
+  width: 450px;
+  height: 250px;
+  display: flex;
+  padding: 50px 30px 40px 55px;
+  margin: 20px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #73737359;
 }
 
 #simulationInfo {
   flex: 0 0 70%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
+  color: #737373;
 }
 
 #anticipationInfo {
-  flex: 0 0 30%;
-  background-color: aquamarine;
+  font-style: italic;
+  color: #5575a4;
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.receive {
+  font-size: 13px;
+  margin: 14px 0;
+}
+
+.simulation {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.formPart {
+  display: flex;
+  flex-direction: column;
+  margin: 17px 0;
+}
+
+label {
+  font-size: 12px;
+}
+
+.maxInstallments {
+  font-size: 10px;
+  font-weight: bold;
+  color: #c5c5c5;
+}
+
+input {
+  border-radius: 4px;
+  border: 1px solid #73737359;
+  margin: 5px 0;
+  font-size: 12px;
+  padding: 10px;
+}
+
+input:focus {
+  outline: none !important;
+  border-color: #737373;
+
+}
+
+.youReceive {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.youReceive:after {
+  position: absolute;
+  content: "";
+  display: block;
+  border-bottom: 1px solid #5575a4;;
+  width: 19%;
+  height: 5px;
+}
+
+.anticipationValue {
+  margin-left: 3px;
+  font-weight: bold;
 }
