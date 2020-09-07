@@ -1,5 +1,6 @@
 export default class View {
   constructor() {
+    this.timer
 
     this.app = this.getElement('#root')
 
@@ -13,7 +14,7 @@ export default class View {
     this.divSimulationInfo.append(this.title)
 
     // Start Form Simulation
-    this.formSimulation = this.createElement('form')
+    this.formSimulation = this.createElement('form', null, 'formInfo')
 
     this.divPart1 = this.createElement('div', 'formPart')
 
@@ -22,7 +23,9 @@ export default class View {
     this.labelInformSalePrice.innerText = 'Informe o valor da venda *'
 
     this.inputSalePrice = this.createElement('input', null, 'salePrice')
-    this.inputSalePrice.type = 'text'
+    this.inputSalePrice.type = 'number'
+    this.inputSalePrice.step = '0.01'
+    this.inputSalePrice.min = '0.01'
     this.inputSalePrice.setAttribute('name', 'salePrice')
 
     this.divPart1.append(this.labelInformSalePrice, this.inputSalePrice)
@@ -37,6 +40,8 @@ export default class View {
 
     this.inputInstallments = this.createElement('input', null, 'installments')
     this.inputInstallments.type = 'number'
+    this.inputInstallments.min = 1
+    this.inputInstallments.max = 12
     this.inputInstallments.setAttribute('name', 'installments')
     this.divPart2.append(this.inputInstallments)
 
@@ -142,6 +147,21 @@ export default class View {
     let element = document.querySelector(selector)
     return element
   }
+
+  bindFormSubmit(handler){
+    document.querySelector("#formInfo").addEventListener('keyup', function(e){
+
+      clearTimeout(this.timer)
+
+      let data = new FormData(this)
+
+
+      this.timer = setTimeout(function () {
+        handler(data)
+      }, 2500);
+    })
+  }
+
 
 
 
