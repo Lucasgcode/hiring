@@ -17,11 +17,16 @@ export default class Controller {
 
   handleFormSubmit(form){
     console.log('handleFormSubmit')
-    console.log(form.get('salePrice'));
 
-    console.log(this._validateForm(form))
+    let payload = {
+      amount: parseInt(form.get('amount')),
+      installments: parseInt(form.get('installments')),
+      mdr: parseInt(form.get('mdrValue'))
+    }
 
-    if(this._validateForm(form)){
+    console.log(this._validateForm(payload))
+
+    if(this._validateForm(payload)){
 
       console.log('form validado')
 
@@ -32,13 +37,8 @@ export default class Controller {
   }
 
 
-  _validateForm(form){
-    let salePrice = parseFloat(form.get('salePrice')),
-      installments = parseInt(form.get('installments')),
-      mdr = parseInt(form.get('mdrValue'))
-    
-    return salePrice >= 0 && installments >= 0 && mdr >= 0
-
+  _validateForm(data){
+    return data.amount >= 0 && data.installments >= 0 && data.mdr >= 0
   }
 
 

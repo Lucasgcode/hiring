@@ -17,6 +17,7 @@
     "@babel/plugin-proposal-class-properties": "^7.1.0"
   },
   "dependencies": {
-    "axios": "^0.20.0"
+    "axios": "^0.20.0",
+    "vanilla-masker": "^1.2.0"
   }
 }

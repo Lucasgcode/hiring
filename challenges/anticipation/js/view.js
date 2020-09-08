@@ -1,3 +1,5 @@
+import VMasker from 'vanilla-masker'
+
 export default class View {
   constructor() {
     this.timer
@@ -23,10 +25,15 @@ export default class View {
     this.labelInformSalePrice.innerText = 'Informe o valor da venda *'
 
     this.inputSalePrice = this.createElement('input', null, 'salePrice')
-    this.inputSalePrice.type = 'number'
-    this.inputSalePrice.step = '0.01'
-    this.inputSalePrice.min = '0.01'
-    this.inputSalePrice.setAttribute('name', 'salePrice')
+    this.inputSalePrice.type = 'text'
+    this.inputSalePrice.name = 'salePrice'
+    VMasker(this.inputSalePrice).maskMoney({
+      precision: 2,
+      separator: ',',
+      unit: 'R$',
+    })
+
+
 
     this.divPart1.append(this.labelInformSalePrice, this.inputSalePrice)
     this.formSimulation.append(this.divPart1)
@@ -155,8 +162,20 @@ export default class View {
 
       let data = new FormData(this)
 
-
       this.timer = setTimeout(function () {
+
+        let salePrice = document.querySelector('#salePrice').value
+
+        if(salePrice) {
+          let salePriceSplit = salePrice.split(' ')
+          let price = salePriceSplit[1].split(',')
+          let cents = parseInt(price[1])
+          let reais = price[0].replace(/\./g, '') * 100
+          let amount = reais + cents
+
+          data.set('amount', amount)
+        }
+
         handler(data)
       }, 2500);
     })
